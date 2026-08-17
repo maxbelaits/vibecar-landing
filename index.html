@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="uk" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vibecar - авто з США під ключ в Україну</title>
+  <meta name="description" content="Vibecar підбирає, перевіряє, купує та доставляє авто з США в Україну. Економія до 40% порівняно з ринком України." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              950: '#061120',
+              925: '#07192d',
+              900: '#0a2039',
+              850: '#0f2d4e',
+              800: '#153b64'
+            },
+            aqua: {
+              200: '#b5fff0',
+              300: '#80f5dc',
+              400: '#45e4cf',
+              500: '#18c4ba'
+            }
+          },
+          fontFamily: {
+            sans: ['Manrope', 'system-ui', 'Segoe UI', 'Arial', 'sans-serif']
+          },
+          boxShadow: {
+            aqua: '0 24px 90px rgba(69, 228, 207, .22)',
+            panel: '0 32px 100px rgba(0, 0, 0, .22)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+    :root { color-scheme: dark; }
+    body { background: #061120; }
+    .glass {
+      border: 1px solid rgba(128, 245, 220, .18);
+      background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.025));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 28px 90px rgba(0,0,0,.24);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+    }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .75s ease, transform .75s ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    .media-card img { transition: transform .8s ease; }
+    .media-card:hover img { transform: scale(1.045); }
+    .nav-link { transition: color .2s ease; }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body class="min-h-[100dvh] overflow-x-hidden bg-navy-950 text-white antialiased">
+  <header class="fixed inset-x-0 top-0 z-40 border-b border-white/10 bg-navy-950/82 backdrop-blur-xl">
+    <nav class="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8" aria-label="Головна навігація">
+      <a href="#top" class="flex items-center gap-3" aria-label="Vibecar">
+        <img src="logo-2.png" alt="Логотип Vibecar" class="h-10 w-10 rounded-2xl" />
+        <span class="text-lg font-extrabold tracking-tight">Vibecar</span>
+      </a>
+      <div class="hidden items-center gap-7 text-sm font-semibold text-slate-200 lg:flex">
+        <a class="nav-link hover:text-aqua-300" href="#benefits">Переваги</a>
+        <a class="nav-link hover:text-aqua-300" href="#process">Процес</a>
+        <a class="nav-link hover:text-aqua-300" href="#comparison">Економія</a>
+        <a class="nav-link hover:text-aqua-300" href="#cases">Кейси</a>
+        <a class="nav-link hover:text-aqua-300" href="#reviews">Відгуки</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="#request" class="hidden rounded-full border border-aqua-300/40 px-5 py-3 text-sm font-extrabold text-aqua-300 transition hover:bg-aqua-300 hover:text-navy-950 active:translate-y-[1px] sm:inline-flex">Отримати прорахунок</a>
+        <button id="menuButton" class="rounded-full border border-white/15 px-4 py-2 text-sm font-bold text-white lg:hidden" type="button" aria-controls="mobileMenu" aria-expanded="false">Меню</button>
+      </div>
+    </nav>
+    <div id="mobileMenu" class="hidden border-t border-white/10 bg-navy-950 px-4 py-4 lg:hidden">
+      <div class="mx-auto grid max-w-7xl gap-3 text-sm font-semibold text-slate-200">
+        <a class="rounded-2xl bg-white/[.045] px-4 py-3" href="#benefits">Переваги</a>
+        <a class="rounded-2xl bg-white/[.045] px-4 py-3" href="#process">Процес</a>
+        <a class="rounded-2xl bg-white/[.045] px-4 py-3" href="#comparison">Економія</a>
+        <a class="rounded-2xl bg-white/[.045] px-4 py-3" href="#cases">Кейси</a>
+        <a class="rounded-2xl bg-aqua-300 px-4 py-3 font-extrabold text-navy-950" href="#request">Залишити заявку</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="relative flex min-h-[100dvh] items-center overflow-hidden pt-[72px]">
+      <video class="absolute inset-0 h-full w-full object-cover opacity-38" src="Car_locking_with_lights_and_202608131547.mp4" autoplay muted loop playsinline poster="з фоном.png"></video>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_35%_22%,rgba(69,228,207,.28),transparent_30%),linear-gradient(90deg,#061120_0%,rgba(6,17,32,.92)_55%,rgba(6,17,32,.45)_100%)]"></div>
+      <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-navy-950"></div>
+      <div class="relative mx-auto grid w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div class="reveal max-w-3xl">
+          <p class="mb-5 inline-flex rounded-full border border-aqua-300/30 bg-aqua-300/10 px-4 py-2 text-sm font-bold text-aqua-300">Авто з США під ключ</p>
+          <h1 class="max-w-3xl text-4xl font-extrabold leading-[1.04] tracking-tighter text-white sm:text-5xl lg:text-6xl">Купіть авто з США дешевше за ринок України</h1>
+          <p class="mt-6 max-w-[58ch] text-lg leading-relaxed text-slate-200">Підбір, перевірка, торги, доставка, митниця та реєстрація. Економія до 40% без зайвого ризику.</p>
+          <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+            <a href="#request" class="inline-flex items-center justify-center rounded-full bg-aqua-300 px-7 py-4 text-base font-extrabold text-navy-950 shadow-aqua transition hover:bg-aqua-400 active:translate-y-[1px]">Підібрати авто</a>
+            <a href="#comparison" class="inline-flex items-center justify-center rounded-full border border-white/18 px-7 py-4 text-base font-bold text-white transition hover:border-aqua-300 hover:text-aqua-300 active:translate-y-[1px]">Порахувати вигоду</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process section - moved to second position -->
+    <section id="process" class="relative min-h-[100dvh] overflow-hidden">
+      <video
+        id="processVideo"
+        class="absolute inset-0 h-full w-full object-cover opacity-45"
+        src="Ships_sailing_and_cars_driving_202608141405.mp4"
+        muted
+        playsinline
+        poster="shipping.png"
+        preload="auto"
+      ></video>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,rgba(6,17,32,.18)_0%,rgba(6,17,32,.94)_74%),linear-gradient(180deg,rgba(6,17,32,.96)_0%,rgba(6,17,32,.25)_46%,rgba(6,17,32,.96)_100%)]"></div>
+
+      <div class="relative mx-auto flex min-h-[100dvh] max-w-7xl flex-col justify-center px-4 py-24 sm:px-6 lg:px-8">
+        <div class="reveal max-w-2xl">
+          <h2 class="text-3xl font-extrabold tracking-tight sm:text-5xl">Ведемо угоду від заявки до ключів</h2>
+          <p class="mt-5 text-lg leading-relaxed text-slate-300">Коли секція зупиняється, скролл прокручує маршрут авто: від аукціону до передачі в Україні.</p>
+        </div>
+
+        <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="process-card reveal rounded-[24px] bg-white/[.045] p-6 ring-1 ring-white/10 backdrop-blur-sm">
+            <h3 class="text-xl font-extrabold text-aqua-300">Підбір</h3>
+            <p class="mt-4 text-sm leading-6 text-slate-300">Фіксуємо модель, комплектацію, бюджет і допустимий стан.</p>
+          </div>
+          <div class="process-card reveal rounded-[24px] bg-white/[.045] p-6 ring-1 ring-white/10 backdrop-blur-sm">
+            <h3 class="text-xl font-extrabold text-aqua-300">Торги</h3>
+            <p class="mt-4 text-sm leading-6 text-slate-300">Купуємо тільки лоти з нормальною економікою та прогнозованим ремонтом.</p>
+          </div>
+          <div class="process-card reveal rounded-[24px] bg-white/[.045] p-6 ring-1 ring-white/10 backdrop-blur-sm">
+            <h3 class="text-xl font-extrabold text-aqua-300">Доставка</h3>
+            <p class="mt-4 text-sm leading-6 text-slate-300">Контролюємо логістику, документи, портові платежі та митницю.</p>
+          </div>
+          <div class="process-card reveal rounded-[24px] bg-white/[.045] p-6 ring-1 ring-white/10 backdrop-blur-sm">
+            <h3 class="text-xl font-extrabold text-aqua-300">Передача</h3>
+            <p class="mt-4 text-sm leading-6 text-slate-300">Допомагаємо з ремонтом, сертифікацією та реєстрацією в Україні.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="benefits" class="py-20 sm:py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal max-w-2xl">
+          <h2 class="text-3xl font-extrabold tracking-tight sm:text-5xl">Більше бюджету на авто, менше на зайві витрати</h2>
+          <p class="mt-5 text-lg leading-relaxed text-slate-300">Ми рахуємо повну вартість до покупки лота, щоб ви бачили реальну вигоду ще до першої ставки.</p>
+        </div>
+        <div class="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-[1.15fr_.85fr_1fr]">
+          <article class="reveal rounded-[28px] border border-aqua-300/20 bg-aqua-300/10 p-7 lg:row-span-2">
+            <h3 class="text-2xl font-extrabold">Економія до 40%</h3>
+            <p class="mt-4 text-base leading-7 text-slate-200">Порівнюємо фінальну ціну під ключ з аналогами на українському ринку та чесно показуємо, коли покупка з США має сенс.</p>
+            <div class="mt-8 rounded-3xl bg-navy-950/70 p-5">
+              <p class="text-sm font-bold text-slate-300">Орієнтир ринку</p>
+              <p class="mt-2 text-3xl font-extrabold tracking-tight text-aqua-300">AUTO.RIA + аукціони США</p>
+            </div>
+          </article>
+          <article class="reveal rounded-[24px] border border-white/10 bg-white/[.045] p-6">
+            <h3 class="text-xl font-extrabold">Перевірка історії</h3>
+            <p class="mt-3 text-sm leading-6 text-slate-300">Пошкодження, пробіг, документи, страхова історія та ризики ремонту до участі в торгах.</p>
+          </article>
+          <article class="reveal overflow-hidden rounded-[24px] border border-white/10 bg-white/[.045]">
+            <img src="https://picsum.photos/seed/vibecar-auction-yard/900/620" alt="Авто на аукціонному майданчику в США" class="h-full min-h-56 w-full object-cover" />
+          </article>
+          <article class="reveal rounded-[24px] border border-white/10 bg-white/[.045] p-6">
+            <h3 class="text-xl font-extrabold">Доставка під ключ</h3>
+            <p class="mt-3 text-sm leading-6 text-slate-300">Майданчик, порт, контейнер, митниця, сертифікація, ремонт і перша реєстрація.</p>
+          </article>
+          <article class="reveal rounded-[24px] border border-white/10 bg-white/[.045] p-6">
+            <h3 class="text-xl font-extrabold">Прозорий бюджет</h3>
+            <p class="mt-3 text-sm leading-6 text-slate-300">Ви бачите всі платежі окремо та не отримуєте неприємних сюрпризів у фіналі.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="comparison" class="py-20 sm:py-24">
+      <div class="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[.95fr_1.05fr] lg:px-8">
+        <div class="reveal flex flex-col justify-center">
+          <h2 class="text-3xl font-extrabold tracking-tight sm:text-5xl">Рахуємо не красиву ціну лота, а повну вартість</h2>
+          <p class="mt-6 text-lg leading-relaxed text-slate-300">Дешева ставка нічого не означає без доставки, мита, ремонту та сертифікації. Ми збираємо всі витрати в один зрозумілий бюджет.</p>
+          <a href="#request" class="mt-8 inline-flex w-fit items-center justify-center rounded-full bg-aqua-300 px-7 py-4 text-base font-extrabold text-navy-950 shadow-aqua transition hover:bg-aqua-400 active:translate-y-[1px]">Зробити прорахунок</a>
+        </div>
+        <div class="reveal rounded-[28px] border border-white/10 bg-white/[.045] p-6 shadow-panel">
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div class="rounded-[24px] bg-navy-950/70 p-6">
+              <p class="text-sm font-bold text-slate-400">Український ринок</p>
+              <p class="mt-4 text-4xl font-extrabold text-white">$31 800</p>
+              <p class="mt-3 text-sm leading-6 text-slate-300">Середній орієнтир для аналогічної комплектації.</p>
+            </div>
+            <div class="rounded-[24px] border border-aqua-300/25 bg-aqua-300/10 p-6">
+              <p class="text-sm font-bold text-aqua-300">Авто з США під ключ</p>
+              <p class="mt-4 text-4xl font-extrabold text-aqua-300">$22 900</p>
+              <p class="mt-3 text-sm leading-6 text-slate-200">Покупка, доставка, митниця, ремонт і реєстрація.</p>
+            </div>
+          </div>
+          <div class="mt-5 rounded-[24px] bg-navy-950/70 p-6">
+            <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p class="text-sm font-bold text-slate-400">Потенційна економія</p>
+                <p class="mt-2 text-5xl font-extrabold tracking-tight text-aqua-300">до 40%</p>
+              </div>
+              <p class="max-w-[34ch] text-sm leading-6 text-slate-300">Фінальна цифра залежить від конкретного авто, курсу, пошкоджень і вартості ремонту.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-navy-900/65 py-20 sm:py-24">
+      <div class="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[.9fr_1.1fr] lg:px-8">
+        <div class="reveal media-card overflow-hidden rounded-[28px]">
+          <img src="https://picsum.photos/seed/vibecar-port-delivery/1200/900" alt="Автомобілі після доставки з порту" class="h-full min-h-[420px] w-full object-cover" />
+        </div>
+        <div class="reveal flex flex-col justify-center rounded-[28px] border border-white/10 bg-white/[.045] p-8 lg:p-10">
+          <h2 class="text-3xl font-extrabold tracking-tight sm:text-5xl">Підбираємо авто під ваш сценарій, а не під залишки на майданчику</h2>
+          <p class="mt-6 text-lg leading-relaxed text-slate-300">Сімейний кросовер, електрокар для міста, преміальний SUV або надійний седан. Для кожного варіанта показуємо бюджет, ризики та очікуваний стан після ремонту.</p>
+          <div class="mt-8 grid gap-4 sm:grid-cols-2">
+            <div class="rounded-2xl bg-navy-800/70 p-5"><strong class="text-aqua-300">Кросовери</strong><p class="mt-2 text-sm text-slate-300">RAV4, CR-V, CX-5, Rogue, Tucson.</p></div>
+            <div class="rounded-2xl bg-navy-800/70 p-5"><strong class="text-aqua-300">Електро</strong><p class="mt-2 text-sm text-slate-300">Tesla, Mach-E, ID.4, Bolt, Leaf.</p></div>
+            <div class="rounded-2xl bg-navy-800/70 p-5"><strong class="text-aqua-300">Преміум</strong><p class="mt-2 text-sm text-slate-300">BMW, Mercedes-Benz, Audi, Lexus.</p></div>
+            <div class="rounded-2xl bg-navy-800/70 p-5"><strong class="text-aqua-300">Седани</strong><p class="mt-2 text-sm text-slate-300">Camry, Accord, Sonata, Passat.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cases" class="py-20 sm:py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal max-w-2xl">
+          <h2 class="text-3xl font-extrabold tracking-tight sm:text-5xl">Кейси привезених авто</h2>
+          <p class="mt-5 text-lg leading-relaxed text-slate-300">Показуємо приклади з повною логікою витрат. Так клієнт розуміє, де саме виникає економія.</p>
+        </div>
+        <div class="mt-12 grid gap-6 lg:grid-cols-3">
+          <article class="media-card reveal overflow-hidden rounded-[28px] border border-white/10 bg-white/[.045]">
+            <div class="overflow-hidden"><img src="https://picsum.photos/seed/vibecar-tesla-model-y-dark/900/620" alt="Tesla Model Y після доставки з США" class="h-64 w-full object-cover" /></div>
+            <div class="p-6"><h3 class="text-2xl font-extrabold">Tesla Model Y</h3><p class="mt-2 text-sm text-slate-300">2021 рік, електро, мінімальні пошкодження.</p><div class="mt-5 grid grid-cols-2 gap-3 text-sm"><div class="rounded-2xl bg-navy-800 p-4"><p class="text-slate-400">Під ключ</p><p class="mt-1 font-extrabold text-aqua-300">$28 900</p></div><div class="rounded-2xl bg-navy-800 p-4"><p class="text-slate-400">Вигода</p><p class="mt-1 font-extrabold text-aqua-300">до 35%</p></div></div></div>
+          </article>
+          <article class="media-card reveal overflow-hidden rounded-[28px] border border-white/10 bg-white/[.045]">
+            <div class="overflow-hidden"><img src="https://picsum.photos/seed/vibecar-toyota-rav4-dark/900/620" alt="Toyota RAV4 після доставки з США" class="h-64 w-full object-cover" /></div>
+            <div class="p-6"><h3 class="text-2xl font-extrabold">Toyota RAV4</h3><p class="mt-2 text-sm text-slate-300">2020 рік, повний привід, сімейний кросовер.</p><div class="mt-5 grid grid-cols-2 gap-3 text-sm"><div class="rounded-2xl bg-navy-800 p-4"><p class="text-slate-400">Під ключ</p><p class="mt-1 font-extrabold text-aqua-300">$22 700</p></div><div class="rounded-2xl bg-navy-800 p-4"><p class="text-slate-400">Вигода</p><p class="mt-1 font-extrabold text-aqua-300">до 31%</p></div></div></div>
+          </article>
+          <article class="media-card reveal overflow-hidden rounded-[28px] border border-white/10 bg-white/[.045]">
+            <div class="overflow-hidden"><img src="https://picsum.photos/seed/vibecar-bmw-x5-dark/900/620" alt="BMW X5 після доставки з США" class="h-64 w-full object-cover" /></div>
+            <div class="p-6"><h3 class="text-2xl font-extrabold">BMW X5</h3><p class="mt-2 text-sm text-slate-300">2019 рік, преміальна комплектація, контроль історії.</p><div class="mt-5 grid grid-cols-2 gap-3 text-sm"><div class="rounded-2xl bg-navy-800 p-4"><p class="text-slate-400">Під ключ</p><p class="mt-1 font-extrabold text-aqua-300">$39 600</p></div><div class="rounded-2xl bg-navy-800 p-4"><p class="text-slate-400">Вигода</p><p class="mt-1 font-extrabold text-aqua-300">до 28%</p></div></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews" class="bg-navy-900/65 py-20 sm:py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal max-w-2xl">
+          <h2 class="text-3xl font-extrabold tracking-tight sm:text-5xl">Клієнти приходять за авто, а залишаються з<span class="hidden sm:inline">і</span> спокоєм</h2>
+          <p class="mt-5 text-lg leading-relaxed text-slate-300">Ми не приховуємо ризики, не тиснемо на рішення та пояснюємо кожен платіж до покупки.</p>
+        </div>
+        <div class="mt-12 grid gap-5 lg:grid-cols-3">
+          <figure class="reveal rounded-[28px] border border-white/10 bg-white/[.045] p-7"><blockquote class="text-lg font-semibold leading-8">«Мені показали три варіанти, пояснили різницю та відмовили від лота з поганою історією. У підсумку взяв кращий RAV4 за менший бюджет.»</blockquote><figcaption class="mt-6 text-sm text-slate-300">Олег Коваль, Київ</figcaption></figure>
+          <figure class="reveal rounded-[28px] border border-white/10 bg-white/[.045] p-7"><blockquote class="text-lg font-semibold leading-8">«Найбільше сподобалась прозорість. Я бачив рахунки, фото з порту, статус доставки та розумів, за що плачу.»</blockquote><figcaption class="mt-6 text-sm text-slate-300">Марія Литвин, Львів</figcaption></figure>
+          <figure class="reveal rounded-[28px] border border-white/10 bg-white/[.045] p-7"><blockquote class="text-lg font-semibold leading-8">«Підібрали Tesla без поспіху. Не було обіцянок заради продажу, тільки конкретний прорахунок і чесна порада.»</blockquote><figcaption class="mt-6 text-sm text-slate-300">Андрій Мельник, Дніпро</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="request" class="relative overflow-hidden py-20 sm:py-24">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_18%,rgba(69,228,207,.22),transparent_34%)]"></div>
+      <div class="relative mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[.9fr_1.1fr] lg:px-8">
+        <div class="reveal">
+          <h2 class="text-3xl font-extrabold tracking-tight sm:text-5xl">Отримайте чесний прорахунок вашого авто</h2>
+          <p class="mt-5 text-lg leading-relaxed text-slate-300">Напишіть бажану модель, бюджет і місто. Ми підготуємо варіанти з США та покажемо фінальну економіку під ключ.</p>
+          <div class="mt-8 rounded-[28px] border border-aqua-300/20 bg-aqua-300/10 p-6">
+            <p class="text-2xl font-extrabold text-aqua-300">До 40% вигоди</p>
+            <p class="mt-2 text-sm leading-6 text-slate-200">Порівнюємо з цінами на українському ринку та рахуємо всю дорогу до ключів.</p>
+          </div>
+        </div>
+        <form class="reveal glass rounded-[28px] p-6 sm:p-8" action="#" method="post">
+          <div class="grid gap-5">
+            <label class="grid gap-2 text-sm font-bold text-slate-100">Ім'я<input class="w-full rounded-2xl border border-white/12 bg-navy-950/80 px-4 py-4 text-white outline-none transition placeholder:text-slate-500 focus:border-aqua-300" name="name" placeholder="Ваше ім'я" required /></label>
+            <label class="grid gap-2 text-sm font-bold text-slate-100">Телефон<input class="w-full rounded-2xl border border-white/12 bg-navy-950/80 px-4 py-4 text-white outline-none transition placeholder:text-slate-500 focus:border-aqua-300" name="phone" placeholder="+380" required /></label>
+            <label class="grid gap-2 text-sm font-bold text-slate-100">Бюджет<input class="w-full rounded-2xl border border-white/12 bg-navy-950/80 px-4 py-4 text-white outline-none transition placeholder:text-slate-500 focus:border-aqua-300" name="budget" placeholder="$20 000" /></label>
+            <label class="grid gap-2 text-sm font-bold text-slate-100">Що шукаєте<textarea class="min-h-32 w-full rounded-2xl border border-white/12 bg-navy-950/80 px-4 py-4 text-white outline-none transition placeholder:text-slate-500 focus:border-aqua-300" name="message" placeholder="Марка, модель, рік, побажання до стану"></textarea></label>
+          </div>
+          <button class="mt-6 w-full rounded-full bg-aqua-300 px-7 py-4 text-base font-extrabold text-navy-950 shadow-aqua transition hover:bg-aqua-400 active:translate-y-[1px]" type="submit">Надіслати заявку</button>
+          <p class="mt-4 text-center text-xs leading-5 text-slate-400">Натискаючи кнопку, ви погоджуєтесь отримати консультацію від менеджера Vibecar.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10 bg-navy-950 py-10">
+    <div class="mx-auto flex max-w-7xl flex-col gap-6 px-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+      <a href="#top" class="flex items-center gap-3"><img src="logo-5.png" alt="Логотип Vibecar" class="h-10 w-10 rounded-2xl" /><span class="font-extrabold">Vibecar</span></a>
+      <div class="flex flex-wrap gap-5 text-sm text-slate-300"><a href="#benefits" class="hover:text-aqua-300">Переваги</a><a href="#process" class="hover:text-aqua-300">Процес</a><a href="#cases" class="hover:text-aqua-300">Кейси</a><a href="#reviews" class="hover:text-aqua-300">Відгуки</a><a href="#request" class="hover:text-aqua-300">Заявка</a></div>
+      <p class="text-sm text-slate-400">© 2026 Vibecar. Доставка авто з США в Україну.</p>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.getElementById('menuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuButton.addEventListener('click', () => {
+      const expanded = menuButton.getAttribute('aria-expanded') === 'true';
+      menuButton.setAttribute('aria-expanded', String(!expanded));
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    mobileMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuButton.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
+
+    // GSAP ScrollTrigger: pin process section + scrub video currentTime
+    gsap.registerPlugin(ScrollTrigger);
+
+    const processVideo = document.getElementById('processVideo');
+    const processSection = document.getElementById('process');
+
+    if (processVideo && processSection) {
+      processVideo.addEventListener('loadedmetadata', () => {
+        if (processVideo.duration) {
+          processVideo.currentTime = 0;
+
+          // Pin the section and scrub video time
+          ScrollTrigger.create({
+            trigger: processSection,
+            start: 'top top',
+            end: 'bottom top',
+            pin: true,
+            pinSpacing: true,
+            scrub: 1,
+            onUpdate: (self) => {
+              processVideo.currentTime = self.progress * processVideo.duration;
+            },
+          });
+        }
+      });
+    }
+
+    document.querySelector('form').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const button = event.currentTarget.querySelector('button');
+      const original = button.textContent;
+      button.textContent = 'Заявку надіслано';
+      button.disabled = true;
+      setTimeout(() => {
+        button.textContent = original;
+        button.disabled = false;
+        event.currentTarget.reset();
+      }, 2200);
+    });
+  </script>
+</body>
+</html>
