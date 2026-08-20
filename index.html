@@ -118,9 +118,15 @@
         muted
         playsinline
         poster="shipping.png"
-        preload="auto"
+        preload="metadata"
       ></video>
       <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,rgba(6,17,32,.18)_0%,rgba(6,17,32,.94)_74%),linear-gradient(180deg,rgba(6,17,32,.96)_0%,rgba(6,17,32,.25)_46%,rgba(6,17,32,.96)_100%)]"></div>
+      <style>
+        @media (max-width: 639px) {
+          #processVideo { opacity: 0.55 !important; }
+          #process { min-height: 100svh !important; }
+        }
+      </style>
 
       <div class="relative mx-auto flex min-h-[100dvh] max-w-7xl flex-col justify-center px-4 py-24 sm:px-6 lg:px-8">
         <div class="reveal max-w-2xl">
@@ -169,7 +175,7 @@
             <p class="mt-3 text-sm leading-6 text-slate-300">Пошкодження, пробіг, документи, страхова історія та ризики ремонту до участі в торгах.</p>
           </article>
           <article class="reveal overflow-hidden rounded-[24px] border border-white/10 bg-white/[.045]">
-            <img src="https://picsum.photos/seed/vibecar-auction-yard/900/620" alt="Авто на аукціонному майданчику в США" class="h-full min-h-56 w-full object-cover" />
+            <img src="Inspectors.jpeg" alt="Перевірка авто на аукціонному майданчику в США" class="h-full min-h-56 w-full object-cover" />
           </article>
           <article class="reveal rounded-[24px] border border-white/10 bg-white/[.045] p-6">
             <h3 class="text-xl font-extrabold">Доставка під ключ</h3>
@@ -194,12 +200,12 @@
           <div class="grid gap-4 sm:grid-cols-2">
             <div class="rounded-[24px] bg-navy-950/70 p-6">
               <p class="text-sm font-bold text-slate-400">Український ринок</p>
-              <p class="mt-4 text-4xl font-extrabold text-white">$31 800</p>
+              <p class="mt-4 text-4xl font-extrabold text-white">$30 800</p>
               <p class="mt-3 text-sm leading-6 text-slate-300">Середній орієнтир для аналогічної комплектації.</p>
             </div>
             <div class="rounded-[24px] border border-aqua-300/25 bg-aqua-300/10 p-6">
               <p class="text-sm font-bold text-aqua-300">Авто з США під ключ</p>
-              <p class="mt-4 text-4xl font-extrabold text-aqua-300">$22 900</p>
+              <p class="mt-4 text-4xl font-extrabold text-aqua-300">$23 900</p>
               <p class="mt-3 text-sm leading-6 text-slate-200">Покупка, доставка, митниця, ремонт і реєстрація.</p>
             </div>
           </div>
@@ -219,7 +225,7 @@
     <section class="bg-navy-900/65 py-20 sm:py-24">
       <div class="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[.9fr_1.1fr] lg:px-8">
         <div class="reveal media-card overflow-hidden rounded-[28px]">
-          <img src="https://picsum.photos/seed/vibecar-port-delivery/1200/900" alt="Автомобілі після доставки з порту" class="h-full min-h-[420px] w-full object-cover" />
+          <img src="Manager.jpeg" alt="Менеджер Vibecar підбирає авто під ваш сценарій" class="h-full min-h-[420px] w-full object-cover" />
         </div>
         <div class="reveal flex flex-col justify-center rounded-[28px] border border-white/10 bg-white/[.045] p-8 lg:p-10">
           <h2 class="text-3xl font-extrabold tracking-tight sm:text-5xl">Підбираємо авто під ваш сценарій, а не під залишки на майданчику</h2>
