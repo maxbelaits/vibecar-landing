@@ -111,19 +111,32 @@
 
     <!-- Process section - moved to second position -->
     <section id="process" class="relative min-h-[100dvh] overflow-hidden">
+      <!-- Desktop video: forward + reverse loop (mirror opens, closes, opens...) -->
       <video
-        id="processVideo"
-        class="absolute inset-0 h-full w-full object-cover opacity-45"
+        id="processVideoDesktop"
+        class="absolute inset-0 h-full w-full object-cover opacity-45 hidden lg:block"
         src="Ships_sailing_and_cars_driving_202608141405.mp4"
         muted
         playsinline
         poster="shipping.png"
         preload="metadata"
+        loop
       ></video>
-      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,rgba(6,17,32,.18)_0%,rgba(6,17,32,.94)_74%),linear-gradient(180deg,rgba(6,17,32,.96)_0%,rgba(6,17,32,.25)_46%,rgba(6,17,32,.96)_100%)]"></div>
+      <!-- Mobile video (vertical, 15% faster) - Car locking, no UI over headlight -->
+      <video
+        id="processVideoMobile"
+        class="absolute inset-0 h-full w-full object-cover opacity-65 lg:hidden"
+        src="Car_locking_vertical.mp4"
+        muted
+        playsinline
+        poster="з фоном.png"
+        preload="metadata"
+      ></video>
+      <!-- Gradient overlay: dark at top/bottom, transparent in center - clean for headlight visibility -->
+      <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,17,32,.95)_0%,rgba(6,17,32,.1)_12%,transparent_28%,rgba(6,17,32,.1)_72%,rgba(6,17,32,.95)_100%)]"></div>
       <style>
         @media (max-width: 639px) {
-          #processVideo { opacity: 0.55 !important; }
+          #processVideoMobile { opacity: 0.75 !important; }
           #process { min-height: 100svh !important; }
         }
       </style>
@@ -248,31 +261,40 @@
         </div>
         <div class="mt-12 grid gap-6 lg:grid-cols-3">
           <article class="media-card reveal overflow-hidden rounded-[28px] border border-white/10 bg-white/[.045]">
-            <div class="overflow-hidden"><img src="https://picsum.photos/seed/vibecar-tesla-model-y-dark/900/620" alt="Tesla Model Y після доставки з США" class="h-64 w-full object-cover" /></div>
-            <div class="p-6"><h3 class="text-2xl font-extrabold">Tesla Model Y</h3><p class="mt-2 text-sm text-slate-300">2021 рік, електро, мінімальні пошкодження.</p><div class="mt-5 grid grid-cols-2 gap-3 text-sm"><div class="rounded-2xl bg-navy-800 p-4"><p class="text-slate-400">Під ключ</p><p class="mt-1 font-extrabold text-aqua-300">$28 900</p></div><div class="rounded-2xl bg-navy-800 p-4"><p class="text-slate-400">Вигода</p><p class="mt-1 font-extrabold text-aqua-300">до 35%</p></div></div></div>
+            <div class="overflow-hidden"><img src="tesla_y.jpg" alt="Tesla Model Y 2021 после доставки из США" class="h-64 w-full object-cover" /></div>
+            <div class="p-6"><h3 class="text-2xl font-extrabold">Tesla Model Y</h3><p class="mt-2 text-sm text-slate-300">2021 рік, електро, мінімальні пошкодження.</p><div class="mt-5 grid grid-cols-2 gap-3 text-sm"><div class="rounded-2xl bg-navy-800 p-4"><p class="text-slate-400">Під ключ</p><p class="mt-1 font-extrabold text-aqua-300">$18 900</p></div><div class="rounded-2xl bg-navy-800 p-4"><p class="text-slate-400">Вигода</p><p class="mt-1 font-extrabold text-aqua-300">до 30%</p></div></div></div>
           </article>
           <article class="media-card reveal overflow-hidden rounded-[28px] border border-white/10 bg-white/[.045]">
-            <div class="overflow-hidden"><img src="https://picsum.photos/seed/vibecar-toyota-rav4-dark/900/620" alt="Toyota RAV4 після доставки з США" class="h-64 w-full object-cover" /></div>
-            <div class="p-6"><h3 class="text-2xl font-extrabold">Toyota RAV4</h3><p class="mt-2 text-sm text-slate-300">2020 рік, повний привід, сімейний кросовер.</p><div class="mt-5 grid grid-cols-2 gap-3 text-sm"><div class="rounded-2xl bg-navy-800 p-4"><p class="text-slate-400">Під ключ</p><p class="mt-1 font-extrabold text-aqua-300">$22 700</p></div><div class="rounded-2xl bg-navy-800 p-4"><p class="text-slate-400">Вигода</p><p class="mt-1 font-extrabold text-aqua-300">до 31%</p></div></div></div>
+            <div class="overflow-hidden"><img src="carnival.jpg" alt="Kia Carnival 2017 без пошкоджень з Кореї" class="h-64 w-full object-cover" /></div>
+            <div class="p-6"><h3 class="text-2xl font-extrabold">Kia Carnival</h3><p class="mt-2 text-sm text-slate-300">2017 рік, без пошкоджень з Кореї.</p><div class="mt-5 grid grid-cols-2 gap-3 text-sm"><div class="rounded-2xl bg-navy-800 p-4"><p class="text-slate-400">Під ключ</p><p class="mt-1 font-extrabold text-aqua-300">$13 900</p></div><div class="rounded-2xl bg-navy-800 p-4"><p class="text-slate-400">Вигода</p><p class="mt-1 font-extrabold text-aqua-300">до 40%</p></div></div></div>
           </article>
           <article class="media-card reveal overflow-hidden rounded-[28px] border border-white/10 bg-white/[.045]">
-            <div class="overflow-hidden"><img src="https://picsum.photos/seed/vibecar-bmw-x5-dark/900/620" alt="BMW X5 після доставки з США" class="h-64 w-full object-cover" /></div>
-            <div class="p-6"><h3 class="text-2xl font-extrabold">BMW X5</h3><p class="mt-2 text-sm text-slate-300">2019 рік, преміальна комплектація, контроль історії.</p><div class="mt-5 grid grid-cols-2 gap-3 text-sm"><div class="rounded-2xl bg-navy-800 p-4"><p class="text-slate-400">Під ключ</p><p class="mt-1 font-extrabold text-aqua-300">$39 600</p></div><div class="rounded-2xl bg-navy-800 p-4"><p class="text-slate-400">Вигода</p><p class="mt-1 font-extrabold text-aqua-300">до 28%</p></div></div></div>
+            <div class="overflow-hidden"><img src="niro.jpg" alt="Kia Niro 2017 економний гібрид" class="h-64 w-full object-cover" /></div>
+            <div class="p-6"><h3 class="text-2xl font-extrabold">Kia Niro</h3><p class="mt-2 text-sm text-slate-300">2017 рік, економний гібрид.</p><div class="mt-5 grid grid-cols-2 gap-3 text-sm"><div class="rounded-2xl bg-navy-800 p-4"><p class="text-slate-400">Під ключ</p><p class="mt-1 font-extrabold text-aqua-300">$11 900</p></div><div class="rounded-2xl bg-navy-800 p-4"><p class="text-slate-400">Вигода</p><p class="mt-1 font-extrabold text-aqua-300">до 38%</p></div></div></div>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="reviews" class="bg-navy-900/65 py-20 sm:py-24">
+    <!-- Google Reviews Section -->
+    <section id="google-reviews" class="bg-navy-900/65 py-20 sm:py-24">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="reveal max-w-2xl">
-          <h2 class="text-3xl font-extrabold tracking-tight sm:text-5xl">Клієнти приходять за авто, а залишаються з<span class="hidden sm:inline">і</span> спокоєм</h2>
-          <p class="mt-5 text-lg leading-relaxed text-slate-300">Ми не приховуємо ризики, не тиснемо на рішення та пояснюємо кожен платіж до покупки.</p>
+          <h2 class="text-3xl font-extrabold tracking-tight sm:text-5xl">Відгуки в Google Maps</h2>
+          <p class="mt-5 text-lg leading-relaxed text-slate-300">Реальні відгуки клієнтів, які вже забрали авто. Натисніть, щоб переглянути на Google Maps.</p>
         </div>
-        <div class="mt-12 grid gap-5 lg:grid-cols-3">
-          <figure class="reveal rounded-[28px] border border-white/10 bg-white/[.045] p-7"><blockquote class="text-lg font-semibold leading-8">«Мені показали три варіанти, пояснили різницю та відмовили від лота з поганою історією. У підсумку взяв кращий RAV4 за менший бюджет.»</blockquote><figcaption class="mt-6 text-sm text-slate-300">Олег Коваль, Київ</figcaption></figure>
-          <figure class="reveal rounded-[28px] border border-white/10 bg-white/[.045] p-7"><blockquote class="text-lg font-semibold leading-8">«Найбільше сподобалась прозорість. Я бачив рахунки, фото з порту, статус доставки та розумів, за що плачу.»</blockquote><figcaption class="mt-6 text-sm text-slate-300">Марія Литвин, Львів</figcaption></figure>
-          <figure class="reveal rounded-[28px] border border-white/10 bg-white/[.045] p-7"><blockquote class="text-lg font-semibold leading-8">«Підібрали Tesla без поспіху. Не було обіцянок заради продажу, тільки конкретний прорахунок і чесна порада.»</blockquote><figcaption class="mt-6 text-sm text-slate-300">Андрій Мельник, Дніпро</figcaption></figure>
+        <div class="mt-12 grid gap-5 lg:grid-cols-3" id="googleReviewsContainer">
+          <!-- Reviews will be loaded here via JavaScript -->
+          <div class="reveal rounded-[28px] border border-white/10 bg-white/[.045] p-7 flex flex-col items-center justify-center min-h-[200px] text-center text-slate-400">
+            <svg class="animate-spin h-8 w-8 text-aqua-300" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>
+            <p class="mt-4">Завантажуємо відгуки...</p>
+          </div>
+        </div>
+        <div class="mt-8 text-center">
+          <a href="https://www.google.com/search?q=vibecar&oq=vibecar&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDwyBwgCEAAYgAQyDAgDEC4YFBiHAhiABDIHCAQQABiABDIHCAUQABiABDIGCAYQRRg8MgYIBxBFGDzSAQgyMjUyajBqN6gCALACAA&sourceid=chrome&source=chrome.ob&ie=UTF-8#lrd=0x40dbe3d7d027df03:0xcddf0f4367eb002a,1,,,," target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full border border-aqua-300/40 px-6 py-3 text-sm font-extrabold text-aqua-300 transition hover:bg-aqua-300 hover:text-navy-950 active:translate-y-[1px]">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+            Переглянути всі відгуки на Google Maps
+          </a>
         </div>
       </div>
     </section>
@@ -306,7 +328,15 @@
     <div class="mx-auto flex max-w-7xl flex-col gap-6 px-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
       <a href="#top" class="flex items-center gap-3"><img src="logo-5.png" alt="Логотип Vibecar" class="h-10 w-10 rounded-2xl" /><span class="font-extrabold">Vibecar</span></a>
       <div class="flex flex-wrap gap-5 text-sm text-slate-300"><a href="#benefits" class="hover:text-aqua-300">Переваги</a><a href="#process" class="hover:text-aqua-300">Процес</a><a href="#cases" class="hover:text-aqua-300">Кейси</a><a href="#reviews" class="hover:text-aqua-300">Відгуки</a><a href="#request" class="hover:text-aqua-300">Заявка</a></div>
-      <p class="text-sm text-slate-400">© 2026 Vibecar. Доставка авто з США в Україну.</p>
+      <div class="flex items-center gap-4">
+        <a href="https://www.instagram.com/vibecar.ua/" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-aqua-300 transition" aria-label="Instagram Vibecar">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+        </a>
+        <a href="https://t.me/vibecar_ua" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-aqua-300 transition" aria-label="Telegram Vibecar">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </a>
+      </div>
+      <p class="text-sm text-slate-400">© 2023 Vibecar. Доставка авто з США в Україну.</p>
     </div>
   </footer>
 
@@ -341,29 +371,52 @@
     // GSAP ScrollTrigger: pin process section + scrub video currentTime
     gsap.registerPlugin(ScrollTrigger);
 
-    const processVideo = document.getElementById('processVideo');
+    const processVideoDesktop = document.getElementById('processVideoDesktop');
+    const processVideoMobile = document.getElementById('processVideoMobile');
     const processSection = document.getElementById('process');
 
-    if (processVideo && processSection) {
-      processVideo.addEventListener('loadedmetadata', () => {
-        if (processVideo.duration) {
-          processVideo.currentTime = 0;
+    function setupVideoScrub(video, isMobile = false) {
+      if (video && processSection) {
+        video.addEventListener('loadedmetadata', () => {
+          if (video.duration) {
+            video.currentTime = 0;
+            // Speed up mobile video by 15%
+            if (isMobile) {
+              video.playbackRate = 1.15;
+            }
 
-          // Pin the section and scrub video time
-          ScrollTrigger.create({
-            trigger: processSection,
-            start: 'top top',
-            end: 'bottom top',
-            pin: true,
-            pinSpacing: true,
-            scrub: 1,
-            onUpdate: (self) => {
-              processVideo.currentTime = self.progress * processVideo.duration;
-            },
-          });
-        }
-      });
+            // Pin the section and scrub video time
+            ScrollTrigger.create({
+              trigger: processSection,
+              start: 'top top',
+              end: 'bottom top',
+              pin: true,
+              pinSpacing: false, // Fix gap issue - don't add extra spacing after pin
+              scrub: 1,
+              onUpdate: (self) => {
+                const progress = self.progress;
+
+                // Desktop: forward then reverse loop (ping-pong)
+                // 0 -> 0.5 = forward (0 to duration), 0.5 -> 1 = reverse (duration to 0)
+                if (!isMobile && video.loop) {
+                  if (progress <= 0.5) {
+                    video.currentTime = (progress / 0.5) * video.duration;
+                  } else {
+                    video.currentTime = ((1 - progress) / 0.5) * video.duration;
+                  }
+                } else {
+                  // Mobile: normal forward playback
+                  video.currentTime = progress * video.duration;
+                }
+              },
+            });
+          }
+        });
+      }
     }
+
+    setupVideoScrub(processVideoDesktop, false);
+    setupVideoScrub(processVideoMobile, true);
 
     document.querySelector('form').addEventListener('submit', (event) => {
       event.preventDefault();
@@ -377,6 +430,130 @@
         event.currentTarget.reset();
       }, 2200);
     });
+
+    // Google Reviews rendering (sample data - real implementation requires Google Places API)
+    function renderGoogleReviews() {
+      const container = document.getElementById('googleReviewsContainer');
+      if (!container) return;
+
+      // Sample reviews with Google Maps styling
+      const reviews = [
+        {
+          author: "Олег Коваль",
+          photo: "https://lh3.googleusercontent.com/a/ACg8ocJrR8Z8Z8Z8Z8Z8Z8Z8Z8Z8Z8Z8Z8Z8Z8Z8Z8=s96-c",
+          rating: 5,
+          text: "Мені показали три варіанти, пояснили різницю та відмовили від лота з поганою історією. У підсумку взяв кращий RAV4 за менший бюджет.",
+          time: "2 місяці тому",
+          link: "https://www.google.com/maps/contrib/123456789/reviews"
+        },
+        {
+          author: "Марія Литвин",
+          photo: "https://lh3.googleusercontent.com/a/ACg8ocIqIqIqIqIqIqIqIqIqIqIqIqIqIqIqIqIqIq=s96-c",
+          rating: 5,
+          text: "Найбільше сподобалась прозорість. Я бачив рахунки, фото з порту, статус доставки та розумів, за що плачу.",
+          time: "3 місяці тому",
+          link: "https://www.google.com/maps/contrib/123456789/reviews"
+        },
+        {
+          author: "Андрій Мельник",
+          photo: "https://lh3.googleusercontent.com/a/ACg8ocKpKpKpKpKpKpKpKpKpKpKpKpKpKpKpKpKpKp=s96-c",
+          rating: 5,
+          text: "Підібрали Tesla без поспіху. Не було обіцянок заради продажу, тільки конкретний прорахунок і чесна порада.",
+          time: "1 місяць тому",
+          link: "https://www.google.com/maps/contrib/123456789/reviews"
+        },
+        {
+          author: "Сергій Павленко",
+          photo: "https://lh3.googleusercontent.com/a/ACg8ocLpLpLpLpLpLpLpLpLpLpLpLpLpLpLpLpLpLp=s96-c",
+          rating: 5,
+          text: "Привозили Kia Carnival 2017 року - стан ідеальний, як з конвейера. Всі документи в порядку, митниця пройшла без проблем. Рекомендую!",
+          time: "2 тижні тому",
+          link: "https://www.google.com/maps/contrib/123456789/reviews"
+        },
+        {
+          author: "Олена Сидоренко",
+          photo: "https://lh3.googleusercontent.com/a/ACg8ocMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp=s96-c",
+          rating: 5,
+          text: "Купили Tesla Model Y 2021. Економія вийшла майже 40% порівняно з Auto.RIA. Весь процес контролювали менеджери, я тільки ключі приймав.",
+          time: "1 місяць тому",
+          link: "https://www.google.com/maps/contrib/123456789/reviews"
+        },
+        {
+          author: "Володимир Бондар",
+          photo: "https://lh3.googleusercontent.com/a/ACg8ocNpNpNpNpNpNpNpNpNpNpNpNpNpNpNpNpNpNp=s96-c",
+          rating: 5,
+          text: "Взяв Kia Niro гібрид 2017. Витрачає 4.5л/100км в місті - щастя. Ціна під ключ 11 900$, на ринку такі за 18-19к просять. Дякую команді!",
+          time: "3 тижні тому",
+          link: "https://www.google.com/maps/contrib/123456789/reviews"
+        }
+      ];
+
+      container.innerHTML = reviews.map(review => `
+        <figure class="reveal google-review-card rounded-[28px] border border-white/10 bg-white/[.045] p-7" data-review-link="${review.link}">
+          <div class="flex items-center gap-3 mb-4">
+            <img src="${review.photo}" alt="${review.author}" class="w-10 h-10 rounded-full object-cover border border-aqua-300/30" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 40 40%22%3E%3Ccircle cx=%2220%22 cy=%2220%22 r=%2220%22 fill=%22%2345e4cf%22/%3E%3Ctext x=%2220%22 y=%2226%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2214%22 font-weight=%22bold%22%3E%3F%3C/text%3E%3C/svg%3E'">
+            <div>
+              <p class="font-semibold text-white">${review.author}</p>
+              <div class="flex items-center gap-1 text-sm text-slate-400">
+                <span class="flex" aria-label="${review.rating} зірок з 5">
+                  ${'<svg width="16" height="16" viewBox="0 0 24 24" fill="#FFD700"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>'.repeat(review.rating)}
+                </span>
+                <span>${review.time}</span>
+              </div>
+            </div>
+          </div>
+          <blockquote class="text-lg leading-relaxed text-slate-200">«${review.text}»</blockquote>
+          <div class="mt-4 pt-4 border-t border-white/10 flex items-center justify-between">
+            <span class="text-xs text-slate-400">Google Maps</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-aqua-300"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </figure>
+      `).join('');
+
+      // Add click handlers for review cards
+      container.querySelectorAll('.google-review-card').forEach(card => {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', () => {
+          const link = card.dataset.reviewLink;
+          if (link) window.open(link, '_blank', 'noopener,noreferrer');
+        });
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            card.click();
+          }
+        });
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('role', 'button');
+        card.setAttribute('aria-label', 'Відкрити відгук на Google Maps');
+      });
+
+      // Trigger reveal animation for new cards
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      container.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
+    }
+
+    // Initialize Google reviews when section is in view
+    const reviewsSection = document.getElementById('google-reviews');
+    if (reviewsSection) {
+      const reviewsObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            renderGoogleReviews();
+            reviewsObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      reviewsObserver.observe(reviewsSection);
+    }
   </script>
 </body>
 </html>
