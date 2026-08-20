@@ -73,7 +73,7 @@
         <a class="nav-link hover:text-aqua-300" href="#process">Процес</a>
         <a class="nav-link hover:text-aqua-300" href="#comparison">Економія</a>
         <a class="nav-link hover:text-aqua-300" href="#cases">Кейси</a>
-        <a class="nav-link hover:text-aqua-300" href="#reviews">Відгуки</a>
+        <a class="nav-link hover:text-aqua-300" href="#google-reviews">Відгуки</a>
       </div>
       <div class="flex items-center gap-3">
         <a href="#request" class="hidden rounded-full border border-aqua-300/40 px-5 py-3 text-sm font-extrabold text-aqua-300 transition hover:bg-aqua-300 hover:text-navy-950 active:translate-y-[1px] sm:inline-flex">Отримати прорахунок</a>
@@ -86,6 +86,7 @@
         <a class="rounded-2xl bg-white/[.045] px-4 py-3" href="#process">Процес</a>
         <a class="rounded-2xl bg-white/[.045] px-4 py-3" href="#comparison">Економія</a>
         <a class="rounded-2xl bg-white/[.045] px-4 py-3" href="#cases">Кейси</a>
+        <a class="rounded-2xl bg-white/[.045] px-4 py-3" href="#google-reviews">Відгуки</a>
         <a class="rounded-2xl bg-aqua-300 px-4 py-3 font-extrabold text-navy-950" href="#request">Залишити заявку</a>
       </div>
     </div>
@@ -93,7 +94,7 @@
 
   <main id="top">
     <section class="relative flex min-h-[100dvh] items-center overflow-hidden pt-[72px]">
-      <video class="absolute inset-0 h-full w-full object-cover opacity-38" src="Car_locking_with_lights_and_202608131547.mp4" autoplay muted loop playsinline poster="з фоном.png"></video>
+      <video class="absolute inset-0 h-full w-full object-cover opacity-38" id="heroVideo" src="Car_locking_with_lights_and_202608131547.mp4" autoplay muted loop playsinline preload="auto" poster="з фоном.png"></video>
       <div class="absolute inset-0 bg-[radial-gradient(circle_at_35%_22%,rgba(69,228,207,.28),transparent_30%),linear-gradient(90deg,#061120_0%,rgba(6,17,32,.92)_55%,rgba(6,17,32,.45)_100%)]"></div>
       <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-navy-950"></div>
       <div class="relative mx-auto grid w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
@@ -125,18 +126,18 @@
       <!-- Mobile video (vertical, 15% faster) - Car locking, no UI over headlight -->
       <video
         id="processVideoMobile"
-        class="absolute inset-0 h-full w-full object-cover opacity-65 lg:hidden"
+        class="absolute inset-0 h-full w-full object-cover opacity-75 lg:hidden"
         src="Car_locking_vertical.mp4"
         muted
         playsinline
+        autoplay
         poster="з фоном.png"
-        preload="metadata"
+        preload="auto"
       ></video>
       <!-- Gradient overlay: dark at top/bottom, transparent in center - clean for headlight visibility -->
       <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,17,32,.95)_0%,rgba(6,17,32,.1)_12%,transparent_28%,rgba(6,17,32,.1)_72%,rgba(6,17,32,.95)_100%)]"></div>
       <style>
         @media (max-width: 639px) {
-          #processVideoMobile { opacity: 0.75 !important; }
           #process { min-height: 100svh !important; }
         }
       </style>
@@ -327,7 +328,7 @@
   <footer class="border-t border-white/10 bg-navy-950 py-10">
     <div class="mx-auto flex max-w-7xl flex-col gap-6 px-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
       <a href="#top" class="flex items-center gap-3"><img src="logo-5.png" alt="Логотип Vibecar" class="h-10 w-10 rounded-2xl" /><span class="font-extrabold">Vibecar</span></a>
-      <div class="flex flex-wrap gap-5 text-sm text-slate-300"><a href="#benefits" class="hover:text-aqua-300">Переваги</a><a href="#process" class="hover:text-aqua-300">Процес</a><a href="#cases" class="hover:text-aqua-300">Кейси</a><a href="#reviews" class="hover:text-aqua-300">Відгуки</a><a href="#request" class="hover:text-aqua-300">Заявка</a></div>
+      <div class="flex flex-wrap gap-5 text-sm text-slate-300"><a href="#benefits" class="hover:text-aqua-300">Переваги</a><a href="#process" class="hover:text-aqua-300">Процес</a><a href="#cases" class="hover:text-aqua-300">Кейси</a><a href="#google-reviews" class="hover:text-aqua-300">Відгуки</a><a href="#request" class="hover:text-aqua-300">Заявка</a></div>
       <div class="flex items-center gap-4">
         <a href="https://www.instagram.com/vibecar.ua/" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-aqua-300 transition" aria-label="Instagram Vibecar">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
@@ -391,7 +392,7 @@
               start: 'top top',
               end: 'bottom top',
               pin: true,
-              pinSpacing: false, // Fix gap issue - don't add extra spacing after pin
+              pinSpacing: true, // Keep pinSpacing true to avoid layout collapse
               scrub: 1,
               onUpdate: (self) => {
                 const progress = self.progress;
@@ -553,6 +554,21 @@
         });
       }, { threshold: 0.1 });
       reviewsObserver.observe(reviewsSection);
+    }
+
+    // Ensure hero video plays on mobile
+    const heroVideo = document.getElementById('heroVideo');
+    if (heroVideo) {
+      heroVideo.play().catch(() => {
+        // Autoplay was prevented, wait for user interaction
+        const playVideo = () => {
+          heroVideo.play();
+          document.removeEventListener('click', playVideo);
+          document.removeEventListener('touchstart', playVideo);
+        };
+        document.addEventListener('click', playVideo, { once: true });
+        document.addEventListener('touchstart', playVideo, { once: true });
+      });
     }
   </script>
 </body>
