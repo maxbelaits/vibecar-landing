@@ -123,7 +123,7 @@
         preload="metadata"
         loop
       ></video>
-      <!-- Mobile video (vertical, 15% faster) - Car locking, no UI over headlight -->
+      <!-- Mobile video (vertical) - Car locking, simple looping background (no scroll scrub) -->
       <video
         id="processVideoMobile"
         class="absolute inset-0 h-full w-full object-cover opacity-75 lg:hidden"
@@ -131,6 +131,7 @@
         muted
         playsinline
         autoplay
+        loop
         poster="з фоном.png"
         preload="auto"
       ></video>
@@ -417,7 +418,18 @@
     }
 
     setupVideoScrub(processVideoDesktop, false);
-    setupVideoScrub(processVideoMobile, true);
+    // Mobile video is a simple looping background - no ScrollTrigger needed
+    if (processVideoMobile) {
+      processVideoMobile.play().catch(() => {
+        const playVideo = () => {
+          processVideoMobile.play();
+          document.removeEventListener('click', playVideo);
+          document.removeEventListener('touchstart', playVideo);
+        };
+        document.addEventListener('click', playVideo, { once: true });
+        document.addEventListener('touchstart', playVideo, { once: true });
+      });
+    }
 
     document.querySelector('form').addEventListener('submit', (event) => {
       event.preventDefault();
