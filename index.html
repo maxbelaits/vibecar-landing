@@ -69,8 +69,8 @@
         <span class="text-lg font-extrabold tracking-tight">Vibecar</span>
       </a>
       <div class="hidden items-center gap-7 text-sm font-semibold text-slate-200 lg:flex">
-        <a class="nav-link hover:text-aqua-300" href="#benefits">Переваги</a>
         <a class="nav-link hover:text-aqua-300" href="#process">Процес</a>
+        <a class="nav-link hover:text-aqua-300" href="#benefits">Переваги</a>
         <a class="nav-link hover:text-aqua-300" href="#comparison">Економія</a>
         <a class="nav-link hover:text-aqua-300" href="#cases">Кейси</a>
         <a class="nav-link hover:text-aqua-300" href="#google-reviews">Відгуки</a>
@@ -82,8 +82,8 @@
     </nav>
     <div id="mobileMenu" class="hidden border-t border-white/10 bg-navy-950 px-4 py-4 lg:hidden">
       <div class="mx-auto grid max-w-7xl gap-3 text-sm font-semibold text-slate-200">
-        <a class="rounded-2xl bg-white/[.045] px-4 py-3" href="#benefits">Переваги</a>
         <a class="rounded-2xl bg-white/[.045] px-4 py-3" href="#process">Процес</a>
+        <a class="rounded-2xl bg-white/[.045] px-4 py-3" href="#benefits">Переваги</a>
         <a class="rounded-2xl bg-white/[.045] px-4 py-3" href="#comparison">Економія</a>
         <a class="rounded-2xl bg-white/[.045] px-4 py-3" href="#cases">Кейси</a>
         <a class="rounded-2xl bg-white/[.045] px-4 py-3" href="#google-reviews">Відгуки</a>
@@ -335,7 +335,7 @@
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
         </a>
         <a href="https://t.me/vibecar_ua" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-aqua-300 transition" aria-label="Telegram Vibecar">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
         </a>
       </div>
       <p class="text-sm text-slate-400">© 2023 Vibecar. Доставка авто з США в Україну.</p>
@@ -387,31 +387,31 @@
               video.playbackRate = 1.15;
             }
 
-            // Pin the section and scrub video time
-            ScrollTrigger.create({
-              trigger: processSection,
-              start: 'top top',
-              end: 'bottom top',
-              pin: true,
-              pinSpacing: true, // Keep pinSpacing true to avoid layout collapse
-              scrub: 1,
-              onUpdate: (self) => {
-                const progress = self.progress;
-
-                // Desktop: forward then reverse loop (ping-pong)
-                // 0 -> 0.5 = forward (0 to duration), 0.5 -> 1 = reverse (duration to 0)
-                if (!isMobile && video.loop) {
-                  if (progress <= 0.5) {
-                    video.currentTime = (progress / 0.5) * video.duration;
-                  } else {
-                    video.currentTime = ((1 - progress) / 0.5) * video.duration;
+            // Only pin and scrub on desktop (>= 1024px)
+            // On mobile, the section scrolls naturally and the video just plays in background
+            if (window.innerWidth >= 1024) {
+              // Pin the section and scrub video time
+              ScrollTrigger.create({
+                trigger: processSection,
+                start: 'top top',
+                end: 'bottom top',
+                pin: true,
+                pinSpacing: true,
+                scrub: 1,
+                onUpdate: (self) => {
+                  const progress = self.progress;
+                  // Desktop: forward then reverse loop (ping-pong)
+                  // 0 -> 0.5 = forward (0 to duration), 0.5 -> 1 = reverse (duration to 0)
+                  if (video.loop) {
+                    if (progress <= 0.5) {
+                      video.currentTime = (progress / 0.5) * video.duration;
+                    } else {
+                      video.currentTime = ((1 - progress) / 0.5) * video.duration;
+                    }
                   }
-                } else {
-                  // Mobile: normal forward playback
-                  video.currentTime = progress * video.duration;
-                }
-              },
-            });
+                },
+              });
+            }
           }
         });
       }
